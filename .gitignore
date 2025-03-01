@@ -1,0 +1,12 @@
+# Ignore Dependencies in any folder
+**/node_modules
+
+# Ignore Env files in any folder
+**/.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
