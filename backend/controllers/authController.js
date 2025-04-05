@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Wallet = require('../models/Wallet'); // Imported Wallet Model
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -7,8 +8,7 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
 
-
-// POST /api/auth/register
+// Register new user
 exports.registerUser = async (req, res) => {
   const { name, email, password, phone } = req.body;
 
@@ -32,20 +32,28 @@ exports.registerUser = async (req, res) => {
     });
 
     if (user) {
+      // 4. Create Wallet for the new user 
+      await Wallet.create({
+        user: user._id,
+        balance: 0
+      });
+
       res.status(201).json({
         _id: user.id,
         name: user.name,
         email: user.email,
-        token: generateToken(user.id), // Send token immediately
+        token: generateToken(user.id),
       });
+    } else {
+      res.status(400).json({ message: 'Invalid user data' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error); 
+    res.status(500).json({ message: 'Server Error' });
   }
 };
 
-
-//  POST /api/auth/login
+//  Authenticate a user
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -65,6 +73,7 @@ exports.loginUser = async (req, res) => {
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
   }
 };

@@ -18,6 +18,7 @@ app.use(helmet());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/wallet', require('./routes/walletRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
