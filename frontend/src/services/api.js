@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api', // Vite proxy handles the rest
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: '/api', 
 });
 
 // Automatically add Token to every request if we have one

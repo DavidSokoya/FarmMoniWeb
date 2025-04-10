@@ -3,7 +3,10 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const helmet = require('helmet');
 const connectDB = require('./config/db');
-
+const authRoutes = require('./routes/authRoutes');
+const walletRoutes = require('./routes/walletRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 dotenv.config();
 
@@ -17,8 +20,10 @@ app.use(cors());
 app.use(helmet());    
 
 // Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/wallet', require('./routes/walletRoutes'));
+app.use('/api/auth', authRoutes);
+app.use('/api/wallet', walletRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 

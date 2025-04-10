@@ -21,7 +21,7 @@ const Login = () => {
     try {
       await login(formData.email, formData.password);
       // Smooth redirect to Dashboard
-      navigate('/'); 
+      navigate('/dashboard'); 
     } catch (err) {
       const message = err.response?.data?.message || 'Invalid email or password';
       setError(message);
