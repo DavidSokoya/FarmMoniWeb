@@ -197,7 +197,7 @@ const LandingPage = () => {
              {/* Right Visual */}
              <div className="hidden lg:block relative">
                  <div className="bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-3xl rotate-3 hover:rotate-0 transition-all duration-500">
-                    <img src="/palmoil.jpg" alt="Red Palm Oil Fruit" className="rounded-2xl shadow-2xl" />
+                    <img src="/palmoil.png" alt="Palm Oil Storage" className="rounded-2xl shadow-2xl" />
                  </div>
              </div>
           </div>
