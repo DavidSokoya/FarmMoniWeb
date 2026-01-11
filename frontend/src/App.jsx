@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import Pages
+// Pages
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -17,9 +17,9 @@ import AdminUsers from './pages/admin/AdminUsers';
 import AdminInvestments from './pages/admin/AdminInvestments';
 import AdminWithdrawals from './pages/admin/AdminWithdrawals';
 
-// Import Route Guards
+// Route Guards
 import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from './components/AdminRoute'; // <--- IMPORT THIS
+import AdminRoute from './components/AdminRoute'; 
 
 function App() {
   return (
